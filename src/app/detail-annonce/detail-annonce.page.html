@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Annonce</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="addAnnonce" (submit)="createAnnonce()">
+    <ion-item>
+      <ion-label stacked>Title</ion-label>
+      <ion-input
+        formControlName="title"
+        type="text"
+        placeholder="Annonce Title"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Description</ion-label>
+      <ion-input
+        formControlName="description"
+        type="text"
+        placeholder="Annonce Short Description"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-radio-group
+        formControlName="categorie"
+        value="Computer"
+        [allowEmptySelection]="false"
+      >
+        <ion-radio value="Computer">Computer</ion-radio><br />
+        <ion-radio value="Smartphone">Smartphone</ion-radio><br />
+      </ion-radio-group>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Price</ion-label>
+      <ion-input formControlName="prix" type="number" placeholder="0000">
+      </ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="!addAnnonce.valid">
+      Add Annonce
+    </ion-button>
+    <ion-button expand="block" type="cancel"> Cancel </ion-button>
+  </form>
+</ion-content>

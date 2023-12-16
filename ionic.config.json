@@ -1,0 +1,7 @@
+{
+  "name": "ionic_annonces",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mes Annonces</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item 
+  [routerLink]="['/details', annonce.id]"
+  *ngFor="let annonce of mesAnnonceList | async">
+    <ion-label>
+      <h2>{{ annonce.title}}</h2>
+      <p>Description: {{ annonce.description }}</p>
+      <p>Price: {{ annonce.prix }}</p>
+      <p>{{ annonce.categorie }}</p>
+    </ion-label>
+  </ion-item> 
+</ion-content>

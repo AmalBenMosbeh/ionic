@@ -1,0 +1,41 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Hello</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-button [routerLink]="['/mes-annonce']"> Mes Annonces </ion-button>
+
+  <ion-content class="ion-padding">
+    <ion-button (click)="logout()">
+      <ion-icon slot="icon-only" name="log-out"></ion-icon>Log-Out
+    </ion-button>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>My Application</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="padding">
+    <ion-item *ngFor="let annonce of annonceList | async">
+      <ion-label>
+        <h2>{{ annonce.title}}</h2>
+        <p>Description: {{ annonce.description }}</p>
+        <p>Price: {{ annonce.prix }}</p>
+        <p>{{ annonce.categorie }}</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-fab slot="fixed" vertical="bottom" horizontal="center">
+      <ion-fab-button [routerLink]="['/add-annonce']">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-content>
+</div>

@@ -26,19 +26,25 @@ export class AddAnnoncePage implements OnInit {
       description: ['', Validators.required],
       prix: ['', Validators.required],
       categorie: ['', Validators.required],
+      //image: ['']
     });
   }
 
   async createAnnonce() {
     const loading = await this.loadingCtrl.create();
-
     const title = this.addAnnonce.value.title;
     const description = this.addAnnonce.value.description;
     const prix = this.addAnnonce.value.prix;
     const categorie = this.addAnnonce.value.categorie;
+    //const image = this.addAnnonce.value.image;
     const userId = this.auth.currentUser?.uid;
+    const docRef = await this.AnnonceService.createAnnonce("",title, description, categorie, prix, userId);
+
+    const generatedId = docRef.id; // Retrieve the ID from the document reference
+    const id = generatedId;
 
     this.AnnonceService.createAnnonce(
+      id,
       title,
       description,
       categorie,
@@ -55,6 +61,7 @@ export class AddAnnoncePage implements OnInit {
           console.error(error);
         });
       }
+      
     );
     return await loading.present();
   }

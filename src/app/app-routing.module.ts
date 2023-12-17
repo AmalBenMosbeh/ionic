@@ -25,6 +25,11 @@ const routes: Routes = [
     path: 'mes-annonce',
     loadChildren: () => import('./mes-annonce/mes-annonce.module').then( m => m.MesAnnoncePageModule)
   },
+  {
+    path: 'details/:id',
+    loadChildren: () =>
+      import('./detail-annonce/detail-annonce.module').then((m) => m.DetailAnnoncePageModule)
+  },
 ];
 
 @NgModule({

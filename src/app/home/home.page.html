@@ -15,17 +15,32 @@
 </ion-menu>
 <div class="ion-page" id="main-content">
   <ion-header>
+    
     <ion-toolbar color="primary">
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>My Application</ion-title>
+
+      <ion-title>All annonce</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-row>
+    <ion-col size="9" offset="1" >
+      <ion-select label="Categorie" label-placement="floating" fill="solid" 
+      [(ngModel)]="categorie" (ionChange)="getAnnoncesbyCategory()">
+      <ion-select-option value="">All</ion-select-option>
+      <ion-select-option value="Accessory">Accessory</ion-select-option>
+        <ion-select-option value="Computer">Computer</ion-select-option>
+        <ion-select-option value="Smartphone">Smartphone</ion-select-option>
+      </ion-select>
+  </ion-col>
+  </ion-row>
   <ion-content class="padding">
-    <ion-item *ngFor="let annonce of annonceList | async">
+    <ion-item 
+    [routerLink]="['/details', annonce.id]"
+    *ngFor="let annonce of annonceList | async">
       <ion-label>
-        <h2>{{ annonce.title}}</h2>
+        <h2>{{annonce.title}}</h2>
         <p>Description: {{ annonce.description }}</p>
         <p>Price: {{ annonce.prix }}</p>
         <p>{{ annonce.categorie }}</p>

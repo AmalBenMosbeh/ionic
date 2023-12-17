@@ -24,11 +24,19 @@ export class HomePage implements OnInit {
     private router: Router,
     private AnnonceService: AnnonceService
   ) {}
+  categorie : any ;
 
   ngOnInit() {
-    return (this.annonceList = this.AnnonceService.getAnnonceList());
+    return (this.getAnnoncesbyCategory());
   }
-
+  getAnnoncesbyCategory() {
+    console.log(this.categorie);
+    if (this.categorie != undefined && this.categorie != "") {
+      this.annonceList = this.AnnonceService.getAnnonceByCathegorie(this.categorie);
+    } else {
+      this.annonceList = this.AnnonceService.getAnnonceList();
+    }
+  }
   async logout() {
     this.authService.logout();
     this.router.navigateByUrl('/login', { replaceUrl: true });

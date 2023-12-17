@@ -1,51 +1,51 @@
-<ion-header>
+
+<ion-header [translucent]="true" >
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button default-href="/"></ion-back-button>
+      <ion-back-button default-href="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Add Annonce</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentAlert(selectedAnnonce.id)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Details of this course</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content padding>
-  <form [formGroup]="addAnnonce" (submit)="createAnnonce()">
-    <ion-item>
-      <ion-label stacked>Title</ion-label>
-      <ion-input
-        formControlName="title"
-        type="text"
-        placeholder="Annonce Title"
-      >
-      </ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Description</ion-label>
-      <ion-input
-        formControlName="description"
-        type="text"
-        placeholder="Annonce Short Description"
-      >
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-radio-group
-        formControlName="categorie"
-        value="Computer"
-        [allowEmptySelection]="false"
-      >
-        <ion-radio value="Computer">Computer</ion-radio><br />
-        <ion-radio value="Smartphone">Smartphone</ion-radio><br />
-      </ion-radio-group>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Price</ion-label>
-      <ion-input formControlName="prix" type="number" placeholder="0000">
-      </ion-input>
-    </ion-item>
 
-    <ion-button expand="block" type="submit" [disabled]="!addAnnonce.valid">
-      Add Annonce
-    </ion-button>
-    <ion-button expand="block" type="cancel"> Cancel </ion-button>
-  </form>
+<ion-content [fullscreen]="true">
+  <div class="ion-margin"  *ngIf="selectedAnnonce">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="9" offset="1">
+          <ion-label>
+          Title: {{ selectedAnnonce.title }}
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="8" offset="1" *ngIf="selectedAnnonce">
+          <ion-label>
+            Description :  {{ selectedAnnonce.description }}
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="8" offset="1" *ngIf="selectedAnnonce">
+          <ion-label>
+            Price :  {{ selectedAnnonce.prix }}
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="8" offset="1" *ngIf="selectedAnnonce">
+          <ion-label>
+            Categorie :  {{ selectedAnnonce.categorie }}
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      
+    </ion-grid>
+  </div>
 </ion-content>

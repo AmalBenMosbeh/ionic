@@ -40,6 +40,9 @@ module.exports = function (config) {
     browsers: ['Chrome'],
     singleRun: false,
     browsers: ['ChromeHeadless'],
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    browserDisconnectTimeout: 10000,  // 10 seconds
+    browserNoActivityTimeout: 60000,   // 1 minute
+
   });
 };
